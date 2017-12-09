@@ -1,14 +1,14 @@
 # java-jop-ideas
 Using panels and JComponent, this project's main goal is to create JOP-equivalent popup dialogs for various tasks.
 
-##Version:
+## Version:
 v1.0
 
-##Author:
+## Author:
 Travis M
 
-##Creation Date:
+## Creation Date:
 2017 December 7 (afternoon or later) EST
 
-##Last Modified:
-2017 December 09 01:25 EST
+## Last Modified:
+2017 December 09 01:34 EST
