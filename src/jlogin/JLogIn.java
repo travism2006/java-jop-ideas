@@ -1,11 +1,14 @@
 package jlogin;
 
-import javax.accessibility.Accessible;
+import java.awt.Graphics;
+
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  * Used for pseudo-extension of JOptionPane to allow for default use cases
@@ -37,44 +40,59 @@ import javax.swing.JLabel;
  * @version 1.0
  * @author tmitchu2
  * */
-public class JLogIn extends JComponent implements Accessible
+public class JLogIn extends JComponent
 {
 	//static accessible codes for using the JLogIn class
 	//public static final int ERROR = 0;
-	private JPanel cont;
-	private JTextField idField,passField;
-	private JLabel idLbl,passLbl;
 	
 	//to avoid 'magic numbers'
 	private static final int COLWIDTH = 15;
 	private static final int WIDTH = 100;
-	private static final int HEIGHT = 70;
+	private static final int HEIGHT = 50;
+	
+	/***/
+	public static final int SHOW_MASK = 0;
+	public static final int HIDE_MASK = -1;
 	
 	/**
-	 * non-default, auto-generated
+	 * default, auto-generated
 	 */
-	private static final long serialVersionUID = -5792390124166217122L;
+	private static final long serialVersionUID = 1L;
 
+	/***/
 	private JLogIn()
 	{
-		idField = new JTextField(COLWIDTH);
-		passField = new JTextField(COLWIDTH);
-		idLbl = new JLabel("Login ID:");
-		passLbl = new JLabel("Password");
-		this.cont = new JPanel(new BoxLayout(cont, BoxLayout.X_AXIS));
-		cont.add(idLbl);cont.add(idField);
-		cont.add(passLbl);cont.add(passField);
-		super.setSize(WIDTH, HEIGHT);
-		setVisible(true);
-		
+		setSize(WIDTH, HEIGHT);
+		//setVisible(true);
 	}
+	
+	/***/
+	public void paintComponent(Graphics g)
+	{super.paintComponent(g);}
 	
 	/**
 	 * 
 	 * @return session acceptance or denail based on their credentials
 	 * */
-	//public static boolean logIn()
-	//{}
+	public static int showLogIn(int maskDeterminant)
+	{
+		JPanel cont = new JPanel();
+		cont.setLayout(new BoxLayout(cont, BoxLayout.X_AXIS));
+		
+		JLabel idLbl = new JLabel("Login ID:");
+		JTextField idField = new JTextField(COLWIDTH);
+		cont.add(idLbl);cont.add(idField);
+		
+		JLabel passLbl = new JLabel("Password");
+		cont.add(passLbl);
+		
+		if(maskDeterminant == SHOW_MASK)
+		{JTextField passField = new JPasswordField(COLWIDTH);cont.add(passField);}
+		else if(maskDeterminant == HIDE_MASK)
+		{JTextField passField = new JTextField(COLWIDTH);cont.add(passField);}
+		
+		return JOptionPane.showConfirmDialog(null, cont, "", JOptionPane.YES_NO_OPTION);
+	}
 	
 	
 	
