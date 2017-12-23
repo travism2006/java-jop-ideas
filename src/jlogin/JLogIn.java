@@ -1,9 +1,8 @@
 package jlogin;
 
-import java.awt.Graphics;
-
 import javax.swing.BoxLayout;
-import javax.swing.JComponent;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -40,7 +39,7 @@ import javax.swing.JOptionPane;
  * @version 1.0
  * @author tmitchu2
  * */
-public class JLogIn extends JComponent
+public class JLogIn extends JDialog
 {
 	//static accessible codes for using the JLogIn class
 	//public static final int ERROR = 0;
@@ -59,16 +58,12 @@ public class JLogIn extends JComponent
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/***/
-	private JLogIn()
-	{
-		setSize(WIDTH, HEIGHT);
-		//setVisible(true);
-	}
+	/**Defatil contructor only used for initializing small frame window size*/
+	public JLogIn()
+	{setSize(WIDTH, HEIGHT);}
 	
-	/***/
-	public void paintComponent(Graphics g)
-	{super.paintComponent(g);}
+	JButton yesBtn = new JButton("Yes");
+	JButton noBtn = new JButton("No");
 	
 	/**
 	 * 
@@ -90,6 +85,11 @@ public class JLogIn extends JComponent
 		{JTextField passField = new JPasswordField(COLWIDTH);cont.add(passField);}
 		else if(maskDeterminant == HIDE_MASK)
 		{JTextField passField = new JTextField(COLWIDTH);cont.add(passField);}
+		
+		//now add buttons
+		
+		
+		
 		
 		return JOptionPane.showConfirmDialog(null, cont, "", JOptionPane.YES_NO_OPTION);
 	}
