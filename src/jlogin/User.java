@@ -16,7 +16,7 @@ public class User
     private static int total;
 
     public User() {
-        total++;
+        total++; 
 
     }
 
