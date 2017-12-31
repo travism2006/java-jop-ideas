@@ -12,7 +12,8 @@ public class JLogInTest
 	public void testShowLogIn()
 	{
 		//choose yes should return the JOP-chosen yes bttn
-		assertTrue(JOptionPane.YES_OPTION == JLogIn.showLogIn(JLogIn.HIDE_MASK));
+		JLogIn login = new JLogIn();
+		assertTrue(JOptionPane.YES_OPTION == login.showLogIn(JLogIn.HIDE_MASK));
 	}
 
 }
