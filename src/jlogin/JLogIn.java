@@ -8,7 +8,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
+import java.awt.*;
 /**
  * Used for pseudo-extension of JOptionPane to allow for default use cases
  * that are typically rendered and found in the JOptionPane class' static
@@ -19,9 +19,10 @@ import javax.swing.JOptionPane;
  * 
 
  * @version 1.0
- * @author tmitchu2
+ * @author tmitchu2 and
+ * @autor whouston
  * */
-public class JLogIn extends JDialog
+public class JLogIn extends JOptionPane
 {
 	//static accessible codes for using the JLogIn class
 	//public static final int ERROR = 0;
@@ -42,7 +43,13 @@ public class JLogIn extends JDialog
 	/**Default contructor only used for initializing small frame window size*/
 	public JLogIn()
 	{
-		setSize(WIDTH, HEIGHT);
+		
+		
+		//this.setBounds(12, 12, 20, 20);
+		this.setBounds(200, 200, 200,200);  
+		//this.setVisible(true);
+		
+		
 	}
 	
 	JButton yesBtn = new JButton("Yes");
@@ -52,34 +59,34 @@ public class JLogIn extends JDialog
 	 * 
 	 * @return session acceptance or denial based on their credentials
 	 * */
-	public static int showLogIn(int maskDeterminant)
+	public int showLogIn(int maskDeterminant)
 	{
-		JPanel cont = new JPanel();
-		cont.setLayout(new BoxLayout(cont, BoxLayout.X_AXIS));
+		//JPanel cont = new JPanel();
+		//cont.setLayout(new BoxLayout(cont, BoxLayout.X_AXIS));
 		
 		JLabel idLbl = new JLabel("Login ID:");
 		JTextField idField = new JTextField(COLWIDTH);
-		cont.add(idLbl);
-		cont.add(idField);
+		this.add(idLbl);
+		this.add(idField);
 		
 		JLabel passLbl = new JLabel("Password");
 		
-		cont.add(passLbl);
+		this.add(passLbl);
 		
 		if(maskDeterminant == SHOW_MASK)
 		{
 			JTextField passField = new JPasswordField(COLWIDTH);
-			cont.add(passField);
+			this.add(passField);
 		}
 		else if(maskDeterminant == HIDE_MASK)
 		{
 			JTextField passField = new JTextField(COLWIDTH);
-			cont.add(passField);
+			this.add(passField);
 		}
 		
 		//now add buttons
 	
-		return JOptionPane.showConfirmDialog(null, cont, "", JOptionPane.YES_NO_OPTION);
+		return this.showConfirmDialog(null, null, "", JOptionPane.YES_NO_OPTION);
 	}
 	
 	
